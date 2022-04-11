@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BlogModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_blogs">
+          <Key>
+            <PropertyRef Name="BlogID" />
+          </Key>
+          <Property Name="BlogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BlogTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BlogCategory" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="BlogAuthor" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="BlogBody" Type="text" Nullable="false" />
+          <Property Name="BlogCreateDate" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="BlogCreateTime" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="BlogPicture" Type="image" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Blog.dbo.uvw_ShowBlogs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="uvw_ShowBlogs">
+          <Key>
+            <PropertyRef Name="BlogID" />
+            <PropertyRef Name="BlogTitle" />
+            <PropertyRef Name="BlogCategory" />
+            <PropertyRef Name="BlogAuthor" />
+            <PropertyRef Name="BlogBody" />
+            <PropertyRef Name="BlogCreateDate" />
+            <PropertyRef Name="BlogCreateTime" />
+          </Key>
+          <Property Name="BlogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BlogTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BlogCategory" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="BlogAuthor" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="BlogBody" Type="text" Nullable="false" />
+          <Property Name="BlogCreateDate" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="BlogCreateTime" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="BlogPicture" Type="image" />
+        </EntityType>
+        <EntityContainer Name="BlogModelStoreContainer">
+          <EntitySet Name="tbl_blogs" EntityType="Self.tbl_blogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="uvw_ShowBlogs" EntityType="Self.uvw_ShowBlogs" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [uvw_ShowBlogs].[BlogID] AS [BlogID], 
+    [uvw_ShowBlogs].[BlogTitle] AS [BlogTitle], 
+    [uvw_ShowBlogs].[BlogCategory] AS [BlogCategory], 
+    [uvw_ShowBlogs].[BlogAuthor] AS [BlogAuthor], 
+    [uvw_ShowBlogs].[BlogBody] AS [BlogBody], 
+    [uvw_ShowBlogs].[BlogCreateDate] AS [BlogCreateDate], 
+    [uvw_ShowBlogs].[BlogCreateTime] AS [BlogCreateTime], 
+    [uvw_ShowBlogs].[BlogPicture] AS [BlogPicture]
+    FROM [dbo].[uvw_ShowBlogs] AS [uvw_ShowBlogs]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BlogModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_blogs">
+          <Key>
+            <PropertyRef Name="BlogID" />
+          </Key>
+          <Property Name="BlogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BlogTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BlogCategory" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BlogAuthor" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BlogBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BlogCreateDate" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BlogCreateTime" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BlogPicture" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="uvw_ShowBlogs">
+          <Key>
+            <PropertyRef Name="BlogID" />
+            <PropertyRef Name="BlogTitle" />
+            <PropertyRef Name="BlogCategory" />
+            <PropertyRef Name="BlogAuthor" />
+            <PropertyRef Name="BlogBody" />
+            <PropertyRef Name="BlogCreateDate" />
+            <PropertyRef Name="BlogCreateTime" />
+          </Key>
+          <Property Name="BlogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BlogTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BlogCategory" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BlogAuthor" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BlogBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BlogCreateDate" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BlogCreateTime" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BlogPicture" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityContainer Name="BlogEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_blogs" EntityType="Self.tbl_blogs" />
+          <EntitySet Name="uvw_ShowBlogs" EntityType="Self.uvw_ShowBlogs" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BlogModelStoreContainer" CdmEntityContainer="BlogEntities">
+          <EntitySetMapping Name="tbl_blogs">
+            <EntityTypeMapping TypeName="BlogModel.tbl_blogs">
+              <MappingFragment StoreEntitySet="tbl_blogs">
+                <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+                <ScalarProperty Name="BlogTitle" ColumnName="BlogTitle" />
+                <ScalarProperty Name="BlogCategory" ColumnName="BlogCategory" />
+                <ScalarProperty Name="BlogAuthor" ColumnName="BlogAuthor" />
+                <ScalarProperty Name="BlogBody" ColumnName="BlogBody" />
+                <ScalarProperty Name="BlogCreateDate" ColumnName="BlogCreateDate" />
+                <ScalarProperty Name="BlogCreateTime" ColumnName="BlogCreateTime" />
+                <ScalarProperty Name="BlogPicture" ColumnName="BlogPicture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="uvw_ShowBlogs">
+            <EntityTypeMapping TypeName="BlogModel.uvw_ShowBlogs">
+              <MappingFragment StoreEntitySet="uvw_ShowBlogs">
+                <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+                <ScalarProperty Name="BlogTitle" ColumnName="BlogTitle" />
+                <ScalarProperty Name="BlogCategory" ColumnName="BlogCategory" />
+                <ScalarProperty Name="BlogAuthor" ColumnName="BlogAuthor" />
+                <ScalarProperty Name="BlogBody" ColumnName="BlogBody" />
+                <ScalarProperty Name="BlogCreateDate" ColumnName="BlogCreateDate" />
+                <ScalarProperty Name="BlogCreateTime" ColumnName="BlogCreateTime" />
+                <ScalarProperty Name="BlogPicture" ColumnName="BlogPicture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
